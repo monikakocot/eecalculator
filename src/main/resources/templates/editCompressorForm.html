@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Compressors</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+<div class="container">
+
+    <div class="title">
+        <h1> Edit Compressors </h1>
+    </div>
+
+    <form action="#" class="form-horizontal" th:action="@{/save}" th:object="${form}" method="post">
+        <fieldset>
+                <span>
+                    <input type="submit" id="submitButton" class="btn btn-success" th:value="Save">
+                    <input type="reset" id="resetButton" class="btn btn-danger" th:value="Reset" />
+                </span>
+
+            <div class="hours">
+                <label> Week hours of working [h]</label>
+                <div class="input-hours">
+                    <input type="number" name="workHours" placeholder="Hours of working per week" value="100">
+                </div>
+            </div>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Type of compressor</th>
+                    <th>Power [kW]</th>
+                    <th>Compressor load [-]</th>
+                    <th>Electricity consumed [kWh]</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="compressor, itemStat : ${form.compressors}">
+                    <td class="hidden"><input hidden th:name="|compressors[${itemStat.index}].id|" th:value="${compressor.getId()}" /></td>
+                    <td><input th:placeholder="Type + ' ' + ${itemStat.count}" th:name="|compressors[${itemStat.index}].name|"
+                               th:value="${compressor.getName()}" required /></td>
+                    <td><input th:placeholder="Name + ' ' + ${itemStat.count}" th:name="|compressors[${itemStat.index}].power|"
+                               th:value="${compressor.getPower()}" required /></td>
+                    <td><input th:placeholder="Load + ' ' + ${itemStat.count}" th:name="|compressors[${itemStat.index}].load|"
+                               th:value="${compressor.getLoad()}" required /></td>
+                    <td><input th:placeholder="Energy + ' ' + ${itemStat.count}" th:name="|compressors[${itemStat.index}].energy|"
+                               th:value="${compressor.getEnergy()}" required /></td>
+                </tr>
+                </tbody>
+            </table>
+        </fieldset>
+    </form>
+
+    <div class="send">
+        <a class="btn btn-info" href="#" th:href="@{/}"> Back to All Compressors </a>
+    </div>
+</div>
+</body>
+
+</html>

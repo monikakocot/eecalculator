@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Compressors</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<style>
+
+    .btn {
+        width: 230px;
+        margin:7px auto;
+    }
+    .send {
+        position: relative;
+        left: 0;
+        right: 0;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    input{
+        width: 230px;
+    }
+
+</style>
+
+<body>
+
+<div class="container">
+    <div class="title">
+        <h2>Contact Form</h2>
+    </div>
+
+    <form th:object="${user}" th:action="@{/form}" method="post">
+        <label>Name:</label><br>
+        <input type="text" th:field="*{name}" />
+        <br><br>
+        <label>Email:</label><br>
+        <input type="text" th:field="*{email}" />
+        <br><br>
+        <input class="btn btn-success" type="submit" value="Submit">
+    </form>
+
+    <div class="send">
+        <a class="btn btn-info" href="#" th:href="@{/}"> Back to All Compressors </a>
+    </div>
+
+    <div class="title">
+        <h4 th:if="${info} != null" th:text="${info}"> Sialalal</h4>
+    </div>
+</div>
+
+</body>
+
+</html>

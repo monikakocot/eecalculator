@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator for industry Compressors</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+
+<body>
+<div class="container">
+    <div class="title">
+        <h1> Calculate potencial energy savings from your industry compressors</h1>
+    </div>
+
+    <div class="addEdit">
+        <a class="btn btn-success" href="#" th:href="@{/create}"> Add Compressor </a>
+        <a class="btn btn-primary" href="#" th:href="@{/edit}" th:classappend="${compressors.empty} ? 'disabled' : ''">
+            Edit Compressors </a>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Type of compressor</th>
+            <th>Power [kW]</th>
+            <th>Compressor load [-]</th>
+            <th>Electricity consumed [kWh]</th>
+            <th>Heat energy for recovery [kWh]</th>
+            <th>Heat energy for recovery [GJ]</th>
+            <th>Potencial Power [KW] </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${compressors.empty}">
+            <p class="empty"> Please add Compressor for calculations </p>
+        </tr>
+        <tr th:each="compressor : ${compressors}">
+            <td><span th:text="${compressor.name}"> Type </span></td>
+            <td><span th:text="${compressor.power}"> Power </span></td>
+            <td><span th:text="${compressor.load}"> Load </span></td>
+            <td><span th:text="${compressor.energy}"> Energy </span></td>
+            <td><span th:text="${compressor.potencialEnergy}">Potencial </span></td>
+            <td><span th:text="${compressor.potencialEnergyGJ}">Potencial Energy GJ </span></td>
+            <td><span th:text="${compressor.potencialPower}">Potencial Power </span></td>
+        </tr>
+        <tr>
+            <th>SUM: </th>
+            <td th:text="${sumOfPower}"> Sum Of Power </td>
+            <td> - </td>
+            <td th:text="${sumOfEnergy}"> Sum Of Energy </td>
+            <td th:text="${sumOfPotencial}"> Sum Of Potencial Energy </td>
+            <td th:text="${sumOfPotencialGJ}"> Sum Of Potencial Energy GJ </td>
+            <td th:text="${sumOfPotencialPower}"> Sum Of Potencial Power </td>
+
+        </tr>
+
+        </tbody>
+    </table>
+
+    <div class="send">
+        <a class="btn btn-success" href="#" th:href="@{/form}"> Send Results! </a>
+    </div>
+
+    <div class="js">
+        <a href="#" th:href="@{/js}">Try another version with dynamic table ;) </a>
+    </div>
+
+</div>
+</body>
+
+</html>
