@@ -122,3 +122,27 @@ fieldset {
     bottom: -100px;
     text-align: center;
 }
+
+.git {
+    text-align: center;
+    margin: 0 auto;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+}
+
+.git img {
+    height: 8vh;
+    width: 12vh;
+}
+
+
+.git p {
+    font-size: 12px;
+    font-family: 'Saira Condensed',
+        sans-serif;
+    text-transform: uppercase;
+    color:black;
+    text-align: center;
+    margin: 0;
+}
