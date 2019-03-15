@@ -35,12 +35,9 @@ public class CalculatorController {
 
     @GetMapping(value = "/create")
     public String showCreateForm(Model model) {
+        
         CompressorForm compressorForm = new CompressorForm();
-
-        for (int i = 1; i <= 1; i++) {
-            compressorForm.addCompressor(new Compressor());
-        }
-
+        compressorForm.addCompressor(new Compressor());
         model.addAttribute("form", compressorForm);
 
         return "createCompressorForm";
